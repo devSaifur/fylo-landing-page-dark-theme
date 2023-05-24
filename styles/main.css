@@ -41,6 +41,7 @@
     --ff-secondary: 'Raleway', sans-serif;
 
     --bg-primary: hsl(218, 28%, 13%);
+    --bg-secondery: hsl(218, 24%, 19%);
     --bg-email: hsl(217, 28%, 15%);
     --bg-testimonial: hsl(219, 30%, 18%);
     --bg-footer: hsl(216, 53%, 9%);
@@ -54,25 +55,56 @@ body {
     font-family: var(--ff-primary);
     color: white;
     font-size: 0.875rem;
+    position: relative;
 }
 
 main {
     display: grid;
-    font-family: var(--ff-secondary);
     background-color: var(--bg-primary);
-    gap: 8rem;
-    padding: 1rem;
-    position: relative;
+    font-family: var(--ff-secondary);
     padding-bottom: 16rem;
+    padding-inline: 1rem;
+    margin-inline: auto;
+    position: relative;
+}
+.background {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    padding-top: 15rem;
+    right: 0;
+    left: 0;
+    z-index: 100;
+}
+.background-clr {
+    display: flex;
+    position: absolute;
+    background-color: var(--bg-secondery);
+    justify-content: center;
+    width: 100%;
+    height: 23rem;
+    z-index: 1;
+    border-bottom-right-radius: 12rem;
+}
+.bg-desktop {
+    display: none;
+}
+.intro-image {
+    padding-block: 2rem;
+    padding-right: 2rem;
+}
+.intro-image img {
+    position: relative;
+    z-index: 200;
 }
 
 header {
     display: flex;
-    background-color: var(--bg-primary);
     justify-content: space-between;
     align-items: center;
     padding-inline: 1rem;
     padding-top: 2rem;
+    background-color: var(--bg-secondery);
 }
 header img {
     max-width: 5rem;
@@ -90,16 +122,18 @@ header img {
     text-decoration: none;
     margin: 0.5rem;
 }
-
-picture {
-    display: none;
-}
-
 .title-section {
     display: grid;
     text-align: center;
-    padding: 1rem;
+    padding: 9rem 1rem;
     gap: 1rem;
+    position: absolute;
+    top: 10rem;
+    z-index: 300;
+}
+.title-section h2 {
+    max-width: 17rem;
+    margin-inline: auto;
 }
 .title-section button {
     margin-inline: auto;
@@ -117,11 +151,13 @@ picture {
     background-image: linear-gradient(to right,hsl(176, 68%, 64%), hsl(176, 68%, 64%));
 }
 
-
 .features-section {
     display: grid;
     text-align: center;
     gap: 4rem;
+    margin-top: 26rem;
+    padding-inline: 1.5rem;
+    margin-bottom: 10rem;
 }
 .features-row {
     display: grid;
@@ -314,7 +350,27 @@ ion-icon:hover {
     color: var(--bg-button-hover);
 }
 
+@media (min-width: 24em) {
+    .title-section {
+        top: 15rem;
+    }
+}
+
 @media (min-width: 40em) {
+    .bg-desktop {
+        display: block;
+    }
+    .bg-mobile {
+        display: none;
+    }
+    .background {
+        padding-top: 48rem;
+        margin-inline: auto;
+    }
+    .background-clr {
+        height: 68rem;
+        border-radius: 0;
+    }
     header {
         padding-top: 2.5rem;
         padding-inline: 3rem;
@@ -339,12 +395,19 @@ ion-icon:hover {
     }
     .features-section {
         row-gap: 8rem;
+        margin-top: 46rem;
     }
     .title-section {
         max-width: 50rem;
         gap: 2rem;
         font-size: 1.75rem;
+        left: 0;
+        right: 0;
         margin-inline: auto;
+        top: 36rem;
+    }
+    .title-section h2 {
+        max-width: 46rem;
     }
     .features-lower-col {
         grid-template-columns: 1fr 1fr;
